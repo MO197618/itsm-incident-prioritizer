@@ -1,0 +1,20 @@
+[
+{
+"number": "INC1001",
+"description": "Company email service is unavailable",
+"impact": "High",
+"urgency": "High"
+},
+{
+"number": "INC1002",
+"description": "One employee cannot access a non-critical application",
+"impact": "Low",
+"urgency": "Medium"
+},
+{
+"number": "INC1003",
+"description": "Several employees experience slow network performance",
+"impact": "Medium",
+"urgency": "Medium"
+}
+]
