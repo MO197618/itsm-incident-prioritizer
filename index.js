@@ -1,3 +1,4 @@
+
 import { readFileSync } from "node:fs";
 
 function prioritizeIncident(incident) {
@@ -21,18 +22,24 @@ Low: "P4"
 }
 };
 
-if (!matrix[impact] || !matrix[impact][urgency]) {
+if (
+!matrix[impact] ||
+!matrix[impact][urgency]
+) {
 throw new Error(
 `Invalid impact or urgency for incident ${incident.number}`
 );
 }
 
+const priority = matrix[impact][urgency];
+
 return {
 number: incident.number,
 description: incident.description,
-impact: impact,
-urgency: urgency,
-priority: matrix[impact][urgency]
+impact,
+urgency,
+priority,
+reason: `${impact} impact + ${urgency} urgency = ${priority}`
 };
 }
 
