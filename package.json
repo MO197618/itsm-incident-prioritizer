@@ -1,0 +1,16 @@
+{
+"name": "itsm-incident-prioritizer",
+"version": "1.0.0",
+"description": "A ServiceNow-inspired ITSM incident prioritization tool",
+"type": "module",
+"scripts": {
+"start": "node index.js"
+},
+"keywords": [
+"itsm",
+"servicenow",
+"incident-management",
+"incident-prioritization"
+],
+"license": "MIT"
+}
