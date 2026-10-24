@@ -4,7 +4,8 @@
 "description": "A ServiceNow-inspired ITSM incident prioritization tool",
 "type": "module",
 "scripts": {
-"start": "node index.js"
+"start": "node index.js",
+"test": "node --test"
 },
 "keywords": [
 "itsm",
