@@ -1,32 +1,45 @@
+import { readFileSync } from "node:fs";
+
 function prioritizeIncident(incident) {
 const { impact, urgency } = incident;
 
-if (!impact || !urgency) {
-throw new Error("Impact and urgency are required.");
-}
-
 const matrix = {
-High: { High: "P1", Medium: "P2", Low: "P3" },
-Medium: { High: "P2", Medium: "P3", Low: "P4" },
-Low: { High: "P3", Medium: "P4", Low: "P4" }
+High: {
+High: "P1",
+Medium: "P2",
+Low: "P3"
+},
+Medium: {
+High: "P2",
+Medium: "P3",
+Low: "P4"
+},
+Low: {
+High: "P3",
+Medium: "P4",
+Low: "P4"
+}
 };
 
 if (!matrix[impact] || !matrix[impact][urgency]) {
-throw new Error("Impact and urgency must be High, Medium, or Low.");
+throw new Error(
+`Invalid impact or urgency for incident ${incident.number}`
+);
 }
 
 return {
-incident: incident.description,
-impact,
-urgency,
+number: incident.number,
+description: incident.description,
+impact: impact,
+urgency: urgency,
 priority: matrix[impact][urgency]
 };
 }
 
-const incident = {
-description: "Company email service is unavailable",
-impact: "High",
-urgency: "High"
-};
+const incidents = JSON.parse(
+readFileSync("incidents.json", "utf8")
+);
 
-console.log(JSON.stringify(prioritizeIncident(incident), null, 2));
+const results = incidents.map(prioritizeIncident);
+
+console.log(JSON.stringify(results, null, 2));
